@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from scraper import wikiScraperSummary, wikiScraperImages, wikiScraperContent, wikiScraperSection, wikiScraperCategories
+import scraper
 
 
 app = FastAPI()
@@ -14,10 +14,10 @@ def root():
 
 @app.get('/wiki/{article}/summary')
 async def get_article(article: str):
-    """Get article from wikipedia"""
+    """Get article summary from wikipedia"""
     print("Getting summary for article: " + article)
     try:
-        response = wikiScraperSummary(article)
+        response = scraper.summary(article)
         print("Success!")
         return response
     except Exception as error:
@@ -31,7 +31,7 @@ async def get_article_images(article: str):
     """Get article images from wikipedia"""
     print("Getting images for article: " + article)
     try:
-        response = wikiScraperImages(article)
+        response = scraper.images(article)
         print("Success!")
         return response
     except Exception as error:
@@ -44,7 +44,7 @@ async def get_article_content(article: str):
     """Get article content from wikipedia"""
     print("Getting content for article: " + article)
     try:
-        response = wikiScraperContent(article)
+        response = scraper.content(article)
         print("Success!")
         return response
     except Exception as error:
@@ -57,7 +57,7 @@ async def get_article_sections(article: str, section: str):
     """Get article sections from wikipedia"""
     print("Getting " + section + " for article: " + article)
     try:
-        response = wikiScraperSection(article, section)
+        response = scraper.section(article, section)
         print("Success!")
         return response
     except Exception as error:
@@ -70,11 +70,11 @@ async def get_article_categories(article: str):
     """Get article categories from wikipedia"""
     print("Getting categories for article: " + article)
     try:
-        response = wikiScraperCategories(article)
+        response = scraper.categories(article)
         print("Success!")
         return response
     except Exception as error:
         print("Error: " + str(error))
         return str(error)
 
-print("***Starting server on port 8000...")
+print("Server is listening on port 8000...")

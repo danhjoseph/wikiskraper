@@ -13,7 +13,7 @@ Learn more about virtual environments [here](https://docs.python.org/3/tutorial/
 
 ## Running the server
 
-To run the server, run the following command:
+To run the server, run the following command from the root directory:
 ```
 uvicorn main:app --reload
 ```
@@ -21,9 +21,11 @@ This will start the server on `localhost:8000`. `--reload` is optional and will 
 
 ## Usage
 
-To use the API, simply send a `GET` request to the /wiki endpoint with the topic you want to search for as a query parameter.
+To use the API, simply send a `GET` request to the /wiki endpoint with the topic you want to search for as a query parameter. Data will be returned as a `string`.  There is a formatting issue, to fix this return the data as a `json` object in your program to make it easier to work with.  See `example.py` for an example of how to do this in Python.  Query parameters should be in the format `taylorswift` and not `Taylor Swift`, `Taylor_Swift`, `Taylor+Swift` or `Taylor%20Swift`. The latter will return an error.
 
 ### Endpoints
+
+An interactive documentation of the API can be found at `localhost:8000/docs`. The endpoints are as follows:
 
 ```
 GET /wiki/{topic}/summary
@@ -64,6 +66,10 @@ GET /wiki/taylorswift/categories
 This will return a list of categories on the Taylor Swift Wikipedia page.
 ```
 
-### Bugs
+## Bugs
 
-There are a few bugs that I am aware of. If you find any that prevent the microservice from working for your use case, please let me know as soon as possible.
+There are a few bugs that I am aware of. If you find any that prevent the microservice from working for your use case, please let me know. I will issue a fix as soon as possible.
+
+## UML Diagram
+
+![UML](/images/Microservices%20Diagram.png)
