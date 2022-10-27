@@ -8,7 +8,13 @@ app = FastAPI()
 @app.get("/")
 def root():
     """Root API endpoint"""
-    info = "Welcome to the Wikipedia Scraper Microservice. Please use the /wiki/ endpoint to scrape Wikipedia. For example, /wiki/RickAstley/summary will return the summary of the Rick Astley Wikipedia page, and /wiki/RickAstley/images will return the images of the Rick Astley Wikipedia page. The endpoints are /summary, /images, /content, /sections, and /categories. Please see the README for more information. I am a robot, I will never give up, I will never let you down, I will never run around and desert you, beep boop."
+    info = """Welcome to the Wikipedia Scraper Microservice. 
+    Please use the /wiki/ endpoint to scrape Wikipedia. For example, 
+    /wiki/RickAstley/summary will return the summary of the Rick Astley Wikipedia page, 
+    and /wiki/RickAstley/images will return the images of the Rick Astley Wikipedia page. 
+    The endpoints are /summary, /images, /content, /sections, and /categories. 
+    Please see the README for more information. I am a robot, I will never give up, I will 
+    never let you down, I will never run around and desert you, beep boop."""
     return info
 
 
